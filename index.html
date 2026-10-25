@@ -509,5 +509,63 @@ footer p { margin: 6px 0; }
     <p>External links belong to their respective owners.</p>
   </footer>
 </main>
+
+<!-- Floating WhatsApp Chat Button -->
+<a
+  class="whatsapp-float"
+  href="https://wa.me/13392459336?text=Hello%2C%20I%20need%20some%20help"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat with us on WhatsApp"
+>
+  <svg viewBox="0 0 32 32" aria-hidden="true">
+    <path fill="currentColor" d="M16 3.2A12.6 12.6 0 0 0 5.1 22.1L3.4 28.6l6.7-1.7A12.8 12.8 0 1 0 16 3.2Zm0 22.9c-2 0-3.9-.5-5.6-1.6l-.4-.2-3.9 1 1-3.8-.3-.4a10.2 10.2 0 1 1 9.2 5Zm5.6-7.6c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a8.4 8.4 0 0 1-2.5-1.5 9.3 9.3 0 0 1-1.7-2.1c-.2-.3 0-.5.2-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.8 1.2 3.2 1.4 3.4a13.3 13.3 0 0 0 5 4.4c.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4s.3-1.3.2-1.4-.3-.3-.5-.4Z"/>
+  </svg>
+  <span>Chat on WhatsApp</span>
+</a>
+
+<style>
+.whatsapp-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 18px;
+  border-radius: 50px;
+  background: #25D366;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 5px 20px rgba(0,0,0,.25);
+  transition: transform .2s, background .2s;
+}
+.whatsapp-float:hover {
+  background: #1fb956;
+  transform: translateY(-3px);
+}
+.whatsapp-float svg {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+@media (max-width: 480px) {
+  .whatsapp-float {
+    right: 14px;
+    bottom: 14px;
+    padding: 13px;
+  }
+  .whatsapp-float span {
+    display: none;
+  }
+}
+</style>
+</body>
+</html>
 </body>
 </html>
