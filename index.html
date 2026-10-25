@@ -1,0 +1,513 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#171811">
+<meta name="description" content="Music, tour dates, merchandise and more.">
+<title>Riley Green | Music & More</title>
+<style>
+:root {
+  --bg: #171811;
+  --card: #292a20;
+  --cream: #f3ead7;
+  --muted: #b9b6a8;
+  --accent: #b3a17c;
+  --border: rgba(243,234,215,.14);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--cream);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+.page {
+  width: min(100% - 32px, 570px);
+  margin: auto;
+  padding: 28px 0 36px;
+}
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.wordmark {
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+.pill {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  padding: 7px 11px;
+}
+.hero {
+  position: relative;
+  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 27px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background:
+    linear-gradient(0deg, #171811 0%, rgba(23,24,17,.3) 65%, rgba(23,24,17,.12)),
+    url("https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=85")
+    center 40% / cover;
+}
+.hero::after {
+  content: "RG";
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-family: Georgia, serif;
+  font-size: 23px;
+  color: rgba(243,234,215,.85);
+  border: 1px solid rgba(243,234,215,.5);
+  padding: 5px 10px;
+}
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: bold;
+}
+h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(42px, 11vw, 68px);
+  line-height: .95;
+  letter-spacing: -2px;
+  margin: 9px 0;
+  text-transform: uppercase;
+}
+.hero p {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin: 10px 0 0;
+}
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px 0 25px;
+  border-bottom: 1px solid var(--border);
+}
+.socials a {
+  color: var(--muted);
+  font-size: 11px;
+  transition: color .2s;
+}
+.socials a:hover { color: var(--cream); }
+.section { padding-top: 27px; }
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 13px;
+}
+h2 {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+.section-heading span {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+.link-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  margin-bottom: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: transform .2s, background .2s, border-color .2s;
+}
+.link-card:hover {
+  transform: translateY(-2px);
+  background: #34352a;
+  border-color: var(--accent);
+}
+.link-card.featured {
+  background: var(--cream);
+  color: #1c1c15;
+  border-color: var(--cream);
+}
+.link-card.featured:hover { background: #e2d3b7; }
+.thumb {
+  flex: 0 0 58px;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #424033;
+  color: var(--cream);
+  font-family: Georgia, serif;
+  font-size: 22px;
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.featured .thumb { background: #d9c8a8; color: #25251c; }
+.link-copy { min-width: 0; flex: 1; }
+.link-copy strong {
+  display: block;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.link-copy small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 4px;
+}
+.featured .link-copy small { color: #5f5b4d; }
+.arrow { font-size: 18px; color: var(--accent); }
+.featured .arrow { color: #28281d; }
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.product {
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.product-art {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  padding: 12px;
+  background:
+    radial-gradient(ellipse at center, #55503b, #25261e 70%);
+  color: var(--cream);
+  font-family: Georgia, serif;
+  font-size: 25px;
+  text-align: center;
+}
+.product-art.vinyl { background: #24241e; }
+.disc {
+  width: 78%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: repeating-radial-gradient(
+    circle, #171811 0, #171811 2px, #36372d 3px, #171811 4px
+  );
+  border: 1px solid #77705a;
+}
+.disc span {
+  display: grid;
+  place-items: center;
+  background: #b9a57d;
+  color: #24241e;
+  border-radius: 50%;
+  width: 30%;
+  height: 30%;
+  font-size: 9px;
+}
+.product-info { padding: 12px; }
+.product-info strong { display: block; font-size: 12px; }
+.product-info span { color: var(--muted); font-size: 11px; }
+.product-info a {
+  display: block;
+  margin-top: 12px;
+  padding: 9px;
+  border: 1px solid var(--border);
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+.outline-link {
+  display: block;
+  padding: 13px;
+  text-align: center;
+  border: 1px solid var(--border);
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-top: 12px;
+  transition: background .2s;
+}
+.outline-link:hover { background: var(--card); }
+.signup {
+  padding: 23px;
+  background: #292a20;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+.signup p { color: var(--muted); font-size: 12px; }
+.signup a {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 12px 18px;
+  background: var(--cream);
+  color: #1b1b14;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+footer {
+  padding-top: 35px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 10px;
+}
+footer .footer-brand {
+  font-family: Georgia, serif;
+  font-size: 19px;
+  color: var(--cream);
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+footer p { margin: 6px 0; }
+@media (max-width: 390px) {
+  .page { width: min(100% - 22px, 570px); }
+  .hero { min-height: 300px; padding: 20px; }
+  .link-card { gap: 10px; padding: 11px; }
+  .thumb { flex-basis: 49px; width: 49px; height: 49px; }
+  .socials { gap: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="topbar">
+    <a class="wordmark" href="#home">RG / MUSIC</a>
+    <span class="pill">COUNTRY MUSIC</span>
+  </header>
+
+  <section class="hero" id="home">
+    <span class="eyebrow">Alabama to Nashville</span>
+    <h1>Riley<br>Green</h1>
+    <p>SINGER · SONGWRITER · OUTDOORSMAN</p>
+  </section>
+
+  <nav class="socials" aria-label="Social media">
+    <a href="https://www.facebook.com/RileyGreenMusic/" target="_blank" rel="noopener">FACEBOOK</a>
+    <a href="https://www.instagram.com/rileyduckman/" target="_blank" rel="noopener">INSTAGRAM</a>
+    <a href="https://www.tiktok.com/@rileyduckman" target="_blank" rel="noopener">TIKTOK</a>
+    <a href="https://open.spotify.com/search/Riley%20Green" target="_blank" rel="noopener">SPOTIFY</a>
+    <a href="https://www.youtube.com/results?search_query=Riley+Green" target="_blank" rel="noopener">YOUTUBE</a>
+  </nav>
+
+  <section class="section" id="featured">
+    <div class="section-heading">
+      <h2>In the spotlight</h2>
+      <span>01 / FEATURED</span>
+    </div>
+
+    <a class="link-card featured"
+       href="https://rileygreen.ffm.to/alabamavstennessee"
+       target="_blank" rel="noopener">
+      <div class="thumb">♪</div>
+      <div class="link-copy">
+        <strong>Alabama Vs. Tennessee</strong>
+        <small>Featuring Peyton Manning · Listen now</small>
+      </div>
+      <span class="arrow">↗</span>
+    </a>
+
+    <a class="link-card"
+       href="https://rileygreen.ffm.to/thatsjustme"
+       target="_blank" rel="noopener">
+      <div class="thumb">RG</div>
+      <div class="link-copy">
+        <strong>That's Just Me — New Album</strong>
+        <small>Stream the latest album</small>
+      </div>
+      <span class="arrow">↗</span>
+    </a>
+
+    <a class="link-card"
+       href="https://www.rileygreenapp.com/"
+       target="_blank" rel="noopener">
+      <div class="thumb">★</div>
+      <div class="link-copy">
+        <strong>Join the Official Fan Club</strong>
+        <small>Get closer to the music</small>
+      </div>
+      <span class="arrow">↗</span>
+    </a>
+  </section>
+
+  <section class="section" id="tour">
+    <div class="section-heading">
+      <h2>On the road</h2>
+      <span>02 / TOUR</span>
+    </div>
+    <a class="link-card"
+       href="https://www.rileygreenmusic.com/tour"
+       target="_blank" rel="noopener">
+      <div class="thumb">♫</div>
+      <div class="link-copy">
+        <strong>That's Just Me Tour</strong>
+        <small>Upcoming shows and ticket information</small>
+      </div>
+      <span class="arrow">↗</span>
+    </a>
+    <a class="outline-link"
+       href="https://www.rileygreenmusic.com/tour"
+       target="_blank" rel="noopener">VIEW ALL SHOWS ↗</a>
+  </section>
+
+  <section class="section" id="music">
+    <div class="section-heading">
+      <h2>Listen to the music</h2>
+      <span>03 / MUSIC</span>
+    </div>
+    <a class="link-card"
+       href="https://carlypearce.lnk.to/IfIDontLeave"
+       target="_blank" rel="noopener">
+      <div class="thumb">♫</div>
+      <div class="link-copy">
+        <strong>If I Don't Leave I'm Gonna Stay</strong>
+        <small>With Carly Pearce</small>
+      </div>
+      <span class="arrow">↗</span>
+    </a>
+    <a class="link-card"
+       href="https://rileygreen.lnk.to/DMIIDDeluxe"
+       target="_blank" rel="noopener">
+      <div class="thumb">RG</div>
+      <div class="link-copy">
+        <strong>Don't Mind If I Do — Deluxe</strong>
+        <small>Listen on your favorite platform</small>
+      </div>
+      <span class="arrow">↗</span>
+    </a>
+    <a class="link-card"
+       href="https://rileygreen.lnk.to/MidtownSessions%21bio"
+       target="_blank" rel="noopener">
+      <div class="thumb">EP</div>
+      <div class="link-copy">
+        <strong>Midtown Sessions EP</strong>
+        <small>Explore the collection</small>
+      </div>
+      <span class="arrow">↗</span>
+    </a>
+    <a class="outline-link"
+       href="https://open.spotify.com/search/Riley%20Green"
+       target="_blank" rel="noopener">EXPLORE STREAMING PLATFORMS ↗</a>
+  </section>
+
+  <section class="section" id="shop">
+    <div class="section-heading">
+      <h2>From the shop</h2>
+      <span>04 / MERCH</span>
+    </div>
+    <div class="products">
+      <article class="product">
+        <div class="product-art">TRACKLIST<br>TEE</div>
+        <div class="product-info">
+          <strong>Tracklist Tee</strong>
+          <span>$40 · Listed price</span>
+          <a href="https://shop.rileygreenmusic.com/"
+             target="_blank" rel="noopener">SHOP ↗</a>
+        </div>
+      </article>
+      <article class="product">
+        <div class="product-art vinyl">
+          <div class="disc"><span>RG</span></div>
+        </div>
+        <div class="product-info">
+          <strong>That's Just Me — Vinyl</strong>
+          <span>$34.99 · Listed price</span>
+          <a href="https://shop.rileygreenmusic.com/"
+             target="_blank" rel="noopener">SHOP ↗</a>
+        </div>
+      </article>
+      <article class="product">
+        <div class="product-art">THAT'S<br>JUST ME</div>
+        <div class="product-info">
+          <strong>Album CD</strong>
+          <span>$14.99 · Listed price</span>
+          <a href="https://shop.rileygreenmusic.com/"
+             target="_blank" rel="noopener">SHOP ↗</a>
+        </div>
+      </article>
+      <article class="product">
+        <div class="product-art vinyl">
+          <div class="disc"><span>BACK<br>40</span></div>
+        </div>
+        <div class="product-info">
+          <strong>Back 40 Edition</strong>
+          <span>Special vinyl edition</span>
+          <a href="https://shop.rileygreenmusic.com/"
+             target="_blank" rel="noopener">SHOP ↗</a>
+        </div>
+      </article>
+    </div>
+    <a class="outline-link"
+       href="https://shop.rileygreenmusic.com/"
+       target="_blank" rel="noopener">VISIT THE OFFICIAL SHOP ↗</a>
+  </section>
+
+  <section class="section" id="updates">
+    <div class="section-heading">
+      <h2>Stay in the loop</h2>
+      <span>05 / UPDATES</span>
+    </div>
+    <div class="signup">
+      <span class="eyebrow">Straight from the road</span>
+      <h2 style="margin-top:12px">Never miss a thing.</h2>
+      <p>Get updates about music, tour dates and more.</p>
+      <a href="https://www.rileygreenmusic.com/"
+         target="_blank" rel="noopener">SIGN UP FOR UPDATES ↗</a>
+    </div>
+    <a class="link-card"
+       href="https://www.cfmt.org/"
+       target="_blank" rel="noopener"
+       style="margin-top:12px">
+      <div class="thumb">♥</div>
+      <div class="link-copy">
+        <strong>Riley Green Family Fund</strong>
+        <small>Learn more about the charitable fund</small>
+      </div>
+      <span class="arrow">↗</span>
+    </a>
+  </section>
+
+  <footer>
+    <div class="footer-brand">RILEY GREEN</div>
+    <p>COUNTRY MUSIC · ALABAMA TO NASHVILLE</p>
+    <p><a href="#home">BACK TO TOP ↑</a></p>
+    <p style="margin-top:20px">
+      Independent fan-made demo for development and testing.
+      Not affiliated with or endorsed by Riley Green.
+    </p>
+    <p>External links belong to their respective owners.</p>
+  </footer>
+</main>
+</body>
+</html>
